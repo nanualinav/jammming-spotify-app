@@ -8,7 +8,9 @@ export const SearchResults = () => {
   return (
     <div className='SearchResults'>
       <h2>Results</h2>
-      <Tracklist />
+      <Tracklist 
+        isRemoval={false}
+      />
     </div>
   )
 }
