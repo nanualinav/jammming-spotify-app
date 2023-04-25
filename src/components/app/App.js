@@ -12,20 +12,11 @@ function App() {
     const [playlistName, setPlaylistName] = useState('My Playlist');
     const [playlistTracks, setPlaylistTracks] = useState([]);
 
-    const search = (term) => {
-        console.log(`term este: ${term}`)
-        console.log(Spotify.search(term));
-
-        Spotify.search(term).then(searchResults => {
-            setSearchResults(searchResults);
-        })
-    }
-
     const addTrack = (track) => {
         console.log(`track este ${track}`)
         let tracks = playlistTracks;
         if (tracks.find(savedTrack => savedTrack.id === track.id)) {
-            return
+            return;
         }
 
         tracks.push(track);
@@ -34,7 +25,7 @@ function App() {
 
     const removeTrack = (track) => {
         let tracks = playlistTracks
-        tracks = tracks.filter(currentTrack => currentTrack.id != track.id);
+        tracks = tracks.filter(currentTrack => currentTrack.id !== track.id);
         setPlaylistTracks(tracks)
     }
 
@@ -47,6 +38,15 @@ function App() {
         Spotify.savePlaylist(playlistName, trackUris).then(() => {
             setPlaylistName('New Playlist')
             setPlaylistTracks([])
+        })
+    }
+
+    const search = (term) => {
+        console.log(`term este: ${term}`)
+        console.log(Spotify.search(term));
+
+        Spotify.search(term).then(searchResults => {
+            setSearchResults(searchResults);
         })
     }
 
