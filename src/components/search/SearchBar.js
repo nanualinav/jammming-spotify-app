@@ -2,7 +2,7 @@ import './SearchBar.css';
 import React from 'react'
 import { useState } from 'react';
 
-export const SearchBar = (onSearch) => {
+export const SearchBar = ({onSearch}) => {
 
   const [term, setTerm] = useState('')
 
@@ -12,7 +12,10 @@ export const SearchBar = (onSearch) => {
   }
 
   const search = () => {
-    onSearch = term
+    if (term) {
+      onSearch(term)
+      setTerm('')
+    }
   }
 
   return (
