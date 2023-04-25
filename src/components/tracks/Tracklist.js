@@ -1,22 +1,16 @@
-import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { selectTracklist } from './tracklistSlice'
-
 import './Tracklist.css'
 import { Track } from './Track'
 
-export const Tracklist = ({isRemoval}) => {
+export const Tracklist = ({isRemoval, tracks}) => {
 
-    const tracklist = useSelector(selectTracklist);
-    //const [isRemoval, setIsRemoval] = useState(true);
-
-    const renderedTracks = tracklist.map(track => (
+    const renderedTracks = tracks ? tracks.map(track => (
         <Track 
           key={track.id}
           track={track}
           isRemoval={isRemoval}
         />
-    ))
+    )) : null
     
   return (
     <div>

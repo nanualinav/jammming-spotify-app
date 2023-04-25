@@ -12,6 +12,6 @@ This is a React web application called **Jammming**. It allows users to search t
  - Html
  -  CSS
  -  JavaScript
- - React/Redux
+ - React
  - HTTP Requests and Responses
 -   Authentication
